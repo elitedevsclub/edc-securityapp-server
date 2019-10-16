@@ -1,0 +1,15 @@
+version: "3"
+services:
+  database:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: edcsecurity
+      PGDATA: /var/lib/postgresql/data/db
+    volumes:
+      - /Users/user/mnt/edc/pgdata:/var/lib/postgresql/data
+    ports:
+      - "56009:5432"
