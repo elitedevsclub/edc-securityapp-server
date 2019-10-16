@@ -1,7 +1,7 @@
 package handlers
 
 type R struct {
-	Error bool `json:"error"`
+	Error   bool   `json:"error"`
 	Message string `json:"message"`
-	Data string `json:"data"`
+	Data    string `json:"data"`
 }

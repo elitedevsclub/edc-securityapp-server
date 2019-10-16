@@ -16,18 +16,18 @@ func init() {
 
 type User struct {
 	gorm.Model
-	Name string `json:"name"`
-	Email string `json:"email"`
-	Address string `json:"address"`
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Address  string `json:"address"`
 	Password string `json:"-"`
-	Verified bool `json:"verified"`
+	Verified bool   `json:"verified"`
 }
 
 type Otp struct {
 	gorm.Model
 	CodeIdentifier string `json:"code_identifier"`
-	Code string `json:"code"`
-	UserId uint `json:"user_id"`
+	Code           string `json:"code"`
+	UserId         uint   `json:"user_id"`
 }
 
 func NewOtp(userId uint) *Otp {
@@ -35,7 +35,7 @@ func NewOtp(userId uint) *Otp {
 	return &Otp{
 		CodeIdentifier: randString(),
 		Code:           code,
-		UserId: userId,
+		UserId:         userId,
 	}
 }
 
@@ -54,15 +54,16 @@ func NewUser(name, email, address, password string) (*User, error) {
 		Verified: false,
 	}, nil
 }
+
 type CreateUserOpts struct {
-	Email string `json:"email"`
-	Name string `json:"name"`
+	Email    string `json:"email"`
+	Name     string `json:"name"`
 	Password string `json:"password"`
-	Address string `json:"address"`
+	Address  string `json:"address"`
 }
 
 type AuthenticateUserOpts struct {
-	Email string `json:"email"`
+	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
@@ -84,8 +85,6 @@ func randString() string {
 	return fmt.Sprintf("%x", m5.Sum(nil))
 }
 
-
 type MailRequest struct {
 	Email, Title, User, Body string
 }
-

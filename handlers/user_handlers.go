@@ -13,7 +13,7 @@ type UserHttpHandler struct {
 }
 
 func NewUserHttpHandler(repo *repos.UserRepository) *UserHttpHandler {
-	return &UserHttpHandler{repo:repo}
+	return &UserHttpHandler{repo: repo}
 }
 
 func (handler *UserHttpHandler) CreateUserHandler(w http.ResponseWriter, r *http.Request) {
@@ -29,8 +29,8 @@ func (handler *UserHttpHandler) CreateUserHandler(w http.ResponseWriter, r *http
 		return
 	}
 	type response struct {
-		User *types.User `json:"user"`
-		CodeIdentifier string `json:"code_identifier"`
+		User           *types.User `json:"user"`
+		CodeIdentifier string      `json:"code_identifier"`
 	}
 	web.OK(w, &response{User: user, CodeIdentifier: otp.CodeIdentifier}, "application/json")
 }

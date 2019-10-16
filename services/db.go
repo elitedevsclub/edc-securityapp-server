@@ -1,6 +1,9 @@
 package services
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+)
 
 func Connect(connectUri string) (*gorm.DB, error) {
 	db, err := gorm.Open("postgres", connectUri)

@@ -14,7 +14,7 @@ type UserRepository struct {
 }
 
 func NewUserRepository(db *gorm.DB) *UserRepository {
-	return &UserRepository{db:db}
+	return &UserRepository{db: db}
 }
 
 func (repo *UserRepository) CreateUser(opt *types.CreateUserOpts) (*types.User, *types.Otp, error) {
@@ -67,7 +67,7 @@ func (repo *UserRepository) AuthenticateUser(opt *types.AuthenticateUserOpts) (*
 
 func (repo *UserRepository) GetUserByAttr(attr string, value interface{}) (*types.User, error) {
 	user := &types.User{}
-	err := repo.db.Table("users").Where(attr + " = ?", value).First(user).Error
+	err := repo.db.Table("users").Where(attr+" = ?", value).First(user).Error
 	if err != nil {
 		return nil, err
 	}
