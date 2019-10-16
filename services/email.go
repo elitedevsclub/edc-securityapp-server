@@ -10,8 +10,7 @@ import (
 )
 
 func SendEmail(req *types.MailRequest) error {
-	log.Println("sending mail to ", req.Email)
-	from := mail.NewEmail("Fast", "hi@fast.co")
+	from := mail.NewEmail("Security App", os.Getenv("EDC_EMAIL_ADDRESS"))
 	subject := req.Title
 	to := mail.NewEmail(req.User, req.Email)
 	message := mail.NewSingleEmail(from, subject, to, req.Body, req.Body)
